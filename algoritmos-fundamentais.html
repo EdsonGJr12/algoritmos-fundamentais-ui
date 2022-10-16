@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        body {
+            background-color: white;
+        }
+
+        .form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center; 
+        }
+
+        .form-input {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+
+            width: 400px;
+            margin-bottom: 15px;
+        }
+
+        .label-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input {
+            border-radius: 4px;
+            height: 25px;
+        }
+
+        button {
+            background-color: #007bff ;
+            border-radius: 4px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            height: 25px;
+        }
+
+        button:hover {
+            filter: brightness(0.9);
+        }
+
+        h4 {
+            margin: 0;
+        }
+
+        .mdc-numeros, .contagem-inputs {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    </style>
+
+</head>
+
+<body>
+    
+    <div>
+        <form class="form">
+            <h1>Algoritmos fundamentais</h1>
+            <div class="form-input">
+                <div class="label-container">
+                    <label for="">Número primo</label>
+                    <h4>Informe um número e execute</h4>
+                </div>
+                <input type="text" id="numero-primo">
+                <button type="button" onclick="handleNumeroPrimo()">Executar</button>
+            </div>
+
+            <div class="form-input">
+                <div class="label-container">
+                    <label for="">Somatório</label>
+                    <h4>Digite uma sequência de números separados por vírgula e execute</h4>
+                </div>
+                <input type="text" id="somatorio">
+                <button type="button" onclick="handleSomatorio()">Executar</button>
+            </div>
+
+            <div class="form-input">
+                <div class="label-container">
+                    <label for="">Fibonacci</label>
+                    <h4>Digite uma sequência inicial de números separadas por vírgula e execute</h4>
+                </div>
+                <input type="text" id="fibonacci">
+                <button type="button" onclick="handleFibonacci()">Executar</button>
+            </div>
+
+            <div class="form-input">
+                <div class="label-container">
+                    <label for="">Máximo divisor comum</label>
+                    <h4>Digite dois números e execute</h4>
+                </div>
+                <div class="mdc-numeros">
+                    <input type="text" id="mdc-1">
+                    <input type="text" id="mdc-2">
+                </div>
+                <button type="button" onclick={handleMDC()}>Executar</button>
+            </div>
+
+            <div class="form-input">
+                <div class="label-container">
+                    <label for="">Quick sort</label>
+                    <h4>Digite uma sequência de números separados por ,</h4>
+                </div>
+                <input type="text" id="quick-sort">
+                <button type="button" onclick="handleQuicksort()">Executar</button>
+            </div>
+
+            <div class="form-input">
+                <div class="label-container">
+                    <label for="">Contagem</label>
+                    <h4>Informe um valor N e um array</h4>
+                </div>
+                <div class="contagem-inputs">
+                    <input type="text" id="contagem-n">
+                    <input type="text" id="contagem-array">
+                </div>
+                <button type="button" onclick="handleContagem()">Executar</button>
+            </div>
+        </form>
+    </div>
+
+</body>
+
+<script src="./algoritmos-fundamentais.js"></script>
+
+<script>
+    function handleNumeroPrimo() {
+        const numeroDigitado = document.getElementById("numero-primo").value;
+        const isNumeroPrimo = isPrimo(numeroDigitado);
+        if (isNumeroPrimo) {
+            alert(`Número ${numeroDigitado} é primo`);
+        } else {
+            alert(`Número ${numeroDigitado} não é primo`);
+        }
+    }
+
+    function handleSomatorio() {
+        const numerosDigitados = document.getElementById("somatorio").value.split(",").map(numero => Number(numero));
+        const somatorio = somar(...numerosDigitados);
+        alert(`Somatório: ${somatorio}`);
+    }
+
+    function handleFibonacci() {
+        const numerosDigitados = arrayFibonacci.length ? arrayFibonacci : document.getElementById("fibonacci").value.split(",").map(numero => Number(numero));
+        const fibonacci = aplicarFibonacci(...numerosDigitados);
+        arrayFibonacci = fibonacci;
+        alert(`Fibonacci: ${arrayFibonacci.join(",")}`);
+    }
+
+    function handleMDC() {
+        const numero1 = Number(document.getElementById("mdc-1").value);
+        const numero2 = Number(document.getElementById("mdc-2").value);
+        const mdc = maximoDivisorComum(numero1, numero2); 
+        alert(`MDC: ${mdc}`);
+    }
+
+    function handleQuicksort() {
+        const numerosDigitados = document.getElementById("quick-sort").value.split(",").map(numero => Number(numero));
+        arrayParaOrdenar = numerosDigitados;
+        quicksort(0, numerosDigitados.length - 1);
+        alert(`Array ordenado: ${arrayParaOrdenar}`);
+    }
+
+    function handleContagem() {
+        N = Number(document.getElementById("contagem-n").value);
+        arrayParaContagem = document.getElementById("contagem-array").value.split(",").map(numero => Number(numero));
+        const quantidade = contar();
+        alert(`Existem: ${quantidade} elementos `);
+    }
+
+</script>
+
+</html>
